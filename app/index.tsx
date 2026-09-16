@@ -1,15 +1,18 @@
-import { Image, Text, View, Pressable } from 'react-native';
+import { Image, Pressable, Text, View, Button } from 'react-native';
+import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
-import { useState} from 'react';
+import { router } from 'expo-router';
+import Botao from '@/components/Botao';
+import Titulo from '@/components/Titulo';
 
 export default function Home() {
-        const [pressionado, setPressionado] = useState(false)
+    const [iniciado, setIniciado] = useState(false)
 
-    function iniciarAplicacao(){
-        console.log("O botão foi pressionado!")
+    function iniciarAplicacao() {
+        setIniciado(true);
+        router.push("/tarefas");
     }
-
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.container}>
@@ -19,27 +22,28 @@ export default function Home() {
                         style={styles.logo}
                         resizeMode='contain'
                     />
-                    <Text style={styles.titulo}>TaskFlow</Text>
+                    
+                    <Titulo texto='TaskFlow'/>
 
-                    <Text style={styles.descricao}>
-                        Organize sua tarefas de forma simples
-                    </Text>
-
-                    <Pressable onPress={iniciarAplicacao} 
-                    onPressIn={() => setPressionado(true)}
-                    onPressOut={() => setPressionado(false)}
-                    style={({pressed}) => [styles.botao, 
-                        pressed && styles.botaoPressionado
-                    ]}
-                    >
-                        <Text style={styles.textoBotao}>
-                            Começar
-                            {pressionado ? "Carregando..." : "Começar"}
+                    {iniciado ? (
+                        <Text style={styles.descricao}>
+                            Bem vindo as TaskFlow!
                         </Text>
-                    </Pressable>
+                    ) : (
+                        <Text style={styles.descricao}>
+                            Organize sua tarefas de forma simples
+                        </Text>
+                    )}
+                    
+
+                    <Botao
+                        texto={iniciado ? "Continuar" : "Começar"}
+                        onPress={iniciarAplicacao}
+                    />
+                    
+
                 </View>
             </View>
         </SafeAreaView>
     );
 }
-

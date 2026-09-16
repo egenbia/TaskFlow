@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#eaeaeaff',
+        backgroundColor: '#f3f3f3',
         padding: 20
     },
     titulo:{
@@ -20,34 +20,26 @@ export const styles = StyleSheet.create({
     descricao:{
         fontSize: 18,
         textAlign: "center",
-        marginBottom: 20
+        marginBottom: 20,
+        lineHeight: 26,
+        color: '#555'
     },
     logo:{
         width: 140,
         height: 140,
         marginBottom: 20
-    },
+    }, 
     card:{
         backgroundColor: '#ffffff',
         padding: 30,
         borderRadius: 20,
         alignItems: 'center'
     },
-    botao: {
-        backgroundColor: '#2563eb',
+    botao:{
+        backgroundColor: '#2563EB',
         paddingVertical: 15,
         paddingHorizontal: 40,
         borderRadius: 10
     },
-    textoBotao: {
-        color: '#ffffff',
-        fontFamily: 'bold',
-        fontSize: 18,
-    },
-    botaoPressionado:{
-        // opacity: 0.7,
-        backgroundColor: '#000',
-        transform: [{ scale: 1.05}]
-    }
-});
 
+});
